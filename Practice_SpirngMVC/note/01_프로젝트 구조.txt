@@ -1,0 +1,29 @@
+
+# 프로젝트 구조
+
+	프로젝트명 
+	ㄴ src/main/java
+	ㄴ src/main/resources
+	ㄴ src/test/java
+	ㄴ src/test/resources
+	JRE System Library[JavaSE-1.6]
+	Maven Dependencies
+	src
+	target
+	pom.xml
+	
+	
+	- src/main/java : 자바 코드를 작성하는곳 (JSP(Dynamic Web Contents)의 src)
+	- src/main/resources : 자바 코드를 실행할 때 필요한 파일들을 보관하는 곳
+	- src/test/java : 작성한 자바 코드의 테스트를 작성 하는곳
+	- src/test/resources : 테스트 코드를 실행할 때 필요한 파일들을 보관하는 곳
+	
+	- src : 웹 코드를 작성하는 곳 (JSP(Dynamic Web Contents)의 WebContent)
+		└ src/main/webapp/WEB-INF/spring/root-context.xml
+		└ src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml
+		
+		- root-context.xml : 스프링 프로젝트 전체 설정 파일
+		- servlet-context.xml : DispatcherServlet을 자바 코드없이 다룰 수 있는 설정 파일
+		
+	- pom.xml : Maven 설정 파일
+	- target : 실제로 만들어질 프로젝트를 미리 볼 수 있음
