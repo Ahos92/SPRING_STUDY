@@ -1,0 +1,19 @@
+
+# 로그를 찍고싶은 클래스에 Logger 장착하기
+	
+	private Logger log = Logger.getLogger(ModelTests.class);
+	
+# 로깅 레벨을 설정하면 설정한 레벨보다 심각한 내용의 로그만 보여주게 된다.
+
+	log.setLevel(Level.WARN);
+	[시시함] ALL < TRACE < DEBUG < INFO < WARN < ERROR < FATAL < OFF [중요함]
+	
+# Log4j의 구성 요소 ★★★ 설정먼저 해주기
+
+	Logger : 클래스에서 발생한 로그를 수집하여 Appender에게 전달하는 역할을 한다.
+	Appender : 전달받은 로그를 기록하는 역할을 한다.
+		└ Target - 어디로 내보낼지 설정 (OutputStream) 
+		└ layout - 출력 모양을 결정 
+		
+# Log4j.xml에서 자세한 설정을 할 수 있다.
+	

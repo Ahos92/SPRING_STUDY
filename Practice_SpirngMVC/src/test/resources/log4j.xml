@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE log4j:configuration PUBLIC "-//APACHE//DTD LOG4J 1.2//EN" "log4j.dtd">
+<!DOCTYPE log4j:configuration PUBLIC "-//APACHE//DTD LOG4J 1.2//EN" "http://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/xml/doc-files/log4j.dtd">
 <log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
 
 	<!-- Appenders -->
@@ -10,9 +10,43 @@
 		</layout>
 	</appender>
 	
+		<!-- 파일로 로그 출력하는 appender / 밑줄이 최신-->
+	<appender name="fileAppender" class="org.apache.log4j.FileAppender">
+		<param name="file" value="./logs/test.log" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%d{yy MMM dd HH:mm:ss}] %-5p: %c{2} - %m%n" />
+		</layout>
+	</appender>
+	
+	<appender name="html" class="org.apache.log4j.FileAppender">
+		<param name="file" value="./logs/test2.html" />
+		<layout class="org.apache.log4j.HTMLLayout">
+		</layout>
+	</appender>
+	
+	<appender name="file2" class="org.apache.log4j.FileAppender">
+		<param name="file" value="./logs/testgame.log" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%d{yy MMM dd HH:mm:ss}] %-5p: %c{2} - %m%n" />
+		</layout>
+	</appender>
+	
 	<!-- Application Loggers -->
 	<logger name="com.kgitbank.practice_mvc">
 		<level value="info" />
+	</logger>
+	
+	<logger name="com.kgitbank.model.ModelTests">
+		<level value="info" />
+		<!-- 파일어펜더를 참조하겠다-->
+		<appender-ref ref="fileAppender"/>
+		<appender-ref ref="html"/>
+	</logger>
+	
+	<logger name="com.kgitbank.model.RCPgameTest">
+		<level value="all" />
+		<!-- 파일어펜더를 참조하겠다-->
+		<appender-ref ref="file2"/>
 	</logger>
 	
 	<!-- 3rdparty Loggers -->

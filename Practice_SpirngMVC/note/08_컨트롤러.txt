@@ -1,0 +1,25 @@
+
+# 스프링 컨트롤러
+	
+	- @Controller 어노테이션을 붙인 클래스는 컨트롤러로 context에 등록이 가능하다
+	- 컨트롤러도 component-scan으로 찾을 수 있다.
+	- DispatcherServlet에 도착한 요청이 컨트롤러로 매핑된다.
+	
+	
+# 어노테이션을 활용해 매핑받기
+
+	- @RequestMapping(value = "/", method = RequestMethod.GET)
+	- @GetMapping(value = "ex/01") - value 생략가능  
+	- @PostMapping ...
+
+
+# 리턴 값을 통한 뷰 처리
+
+	- String 타입 : prefix + 리턴값 + suffix (servlet-context 참조)
+	- void 타입 : prefix + URI + suffix
+	- ModelAndView 타입 : model(addObject) + String(setViewName)
+	
+	
+# 컨트롤러의 파라미터 자동 추출 기능
+
+	- 

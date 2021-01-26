@@ -1,4 +1,4 @@
-package com.kgitbank.practice_mvc;
+package com.kgitbank.controller.practice;
 
 import java.text.DateFormat;
 import java.util.Date;
@@ -34,6 +34,7 @@ public class HomeController {
 		model.addAttribute("serverTime", formattedDate );
 		
 		return "home";
+		// /WEB-INF/views/ home .jsp
 	}
 	
 }

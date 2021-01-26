@@ -21,8 +21,8 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
-	<context:component-scan base-package="com.kgitbank.practice_mvc" />
-	
+	<!-- 하위 패키지들도 다 찾아줌 -->
+	<context:component-scan base-package="com.kgitbank.controller" />
 	
 	
 </beans:beans>

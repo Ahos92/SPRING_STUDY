@@ -7,5 +7,15 @@
 					2. 속성은 private으로 설정하고 getter와 setter를 이용해서 접근해야 한다.
 	- 
 
-# 03_롬복(Lombok)
+# Lombok
 
+	- 뻔한 메서드들을 간편하게 어노테이션으로 구현해준다
+		└ @Getter : 해당 클래스의 Getter를 자동으로 생성
+		└ @Setter : 해당 클래스의 Setter를 자동으로 생성
+		└ @ToString : 해당 클래스의 toString을 자동으로 생성
+		└ @EqualsAndHashCode : 해당 클래스의 equals와 hashCode를 자동으로 생성
+		└ @Data : 위에거 전부
+		└ @NoArgsConstructor : 기본 생성자 자동 생성
+		└ @AllArgsConstructor : 모든 필드를 매개변수로 받는 생성자를 자동으로 생성 
+		└ @RequiredArgsConstructor : @NonNull이 붙은 필드만 매개변수로 받는 생성자를 자동으로 생성 
+		

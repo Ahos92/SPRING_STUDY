@@ -1,0 +1,43 @@
+
+# web.xml / root-context.xml / servlet-context.xml 
+ 
+	- web.xml : 톰캣 설정
+		- root-context.xml : 프로젝트 전체 설정 (spring-context)
+		- servlet-context.xml : appServelt의 설정
+	
+		
+# ContextLoadListener
+
+	- root-context에 등록한 bean들은 spring-context에 등록된다.  
+	- context에 등록한 자원들을 필요할 때마다 불러서 사용할 수 있도록 해주는 프로그램
+	
+	
+# DispatcherServlet
+
+	- 스프링 MVC에서 핵심적인 역할을 하는 컨트롤러
+	- 초기화할 때 servlet-context.xml에 설정한 값들이 사용된다.
+	- 모든 HttpServletRequest가 DispatcherServlet을 통과하도록 설계되어 있다. (Front-Controller 패턴)
+	- 모든 요청을 적합한 컨트롤러로 분배해주는 역할을 한다.
+	
+	
+# Spring MVC Model2
+
+	Model
+		- 데이터 클래스 (DTO / VO / domain / bean ...)
+		- 데이터를 간편하게 운반할 수 있는 데이터의 묶음
+		
+	View
+		- .jsp (EL / JSTL)
+		- HTML / CSS / JS
+		- Controller에서 전달받은 Attribute에서 데이터를 꺼내 웹 페이지를 완성시킨다
+		
+	Controller
+		- DispatcherServlet이 관리하게 되는 것들
+		- DispatcherServlet이 요청에 따라 알맞은 컨트롤러를 매핑 시켜준다.
+		- 요청 처리를 위한 비즈니스 로직이 작성되는 곳
+		- 필요시 DB에서 데이터를 꺼내온다.
+			- Attribute에 데이터 실어놓음 (컨트롤러 내부의 Model 객체에)
+		- 모든 처리가 끝난 후 알맞은 리턴
+		- 컨트롤러의 리턴은	InternalResourceViewResolver에 의해 처리된다.
+		
+		
