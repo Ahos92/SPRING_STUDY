@@ -22,4 +22,58 @@
 	
 # 컨트롤러의 파라미터 자동 추출 기능
 
-	- 
+	- 파라미터명(input태그의 name)과 컨트롤러의 매개변수 이름을 일치시키면 전달받은 파라미터를 
+		알아서 컨트롤러의 매개변수로 매핑시킨다.
+		
+	- 파라미터명과 매개변수명을 일치 시킬수 없을 때 @RequestParam("name") name1과 같이 사용한다.
+	
+   ★- 데이터클래스의 필드명과 파라미터명을 일치 시키면 알아서 해당 값을 채운 인스턴스가 생성해주고
+		모델에도 자동으로 추가된다.
+		
+	- 데이터 클래스 이외의 형태로 받은 파라미터들은 @ModelAttribute("")를 이용해 모델에 추가할 수 있다.
+	
+	- type=checkbox, multiple등 하나의 이름으로 여러개의 파라미터 값을 받아야 하는 경우에는
+		배열을 이용하면 자동으로 매핑해준다.
+		
+	( 데이터 클래스 )
+	- 날짜 형태의 데이터를 전달받을 경우, 문자열로 도착하는 데이터를	
+		@DateTimeFormat(pattern = "yyyy-MM-dd") 을 통해 손쉽게 java.util.Date타입으로 변환할 수 있다.
+
+		
+# 리다이렉트
+
+	- String타입으로 리턴하는 컨트롤러에서 원하는 주소 앞에 "redirect:"를 추가한다.
+	
+	- RedirectAttributes.addFlashAttribute()를 통해 일회성 Attribute를 추가할 수 있다.
+	
+	- RedirectAttributes.addAttribute()는 리다이렉트 주소 뒤에 GEt방식 파라미터로 변환하여 전달된다.
+	
+	
+# 세션
+
+	- 컨트롤러에 @SessionAttribute로 사용될 AttributeName을 등록해놓을 수 있다.
+	
+	- @SessionAttribute로 등록된 이름은 해당 컨트롤러에서 그이름의 어트리뷰트를 모델에 추가할 때 세션 영역에 추가된다.
+	
+	- 파라미터에 @ModelAttribute() 또는 @SessionAttribute()를 추가하면 @SessionAttributes에 설정된 이름들은
+		세션 영역에서 값을 가져온다.
+		
+	- 다 쓴 세션값들을 초기화 할 때는 파라미터로 SessionStatus를 받아와서 setComplete()를 호출한다.ㅣ
+	
+	- @SessionAttribute로 등록되지 않은 다른 컨트롤러에서는 세션값에 접근할 때 @SessionAttribute()만 쓸 수 있다. 
+	 
+	
+# 컨트롤러(DispatcherServlet)에서 예외 발생시 에러 페이지로 보내기
+
+	- appServlet의 초기화 파라미터를 통해 예외처리 방식을 변경할 수 있다.
+	
+		<init-param>
+			<param-name>throwExceptionIfNoHandlerFound</param-name>
+			<param-value>true</param-value>
+		</init-param>
+	
+	- throwException방식으로 변경하게 되면 예외 발생시 @ControllerAdvice가 붙은 빈들이 호출된다.
+	
+	- 각 메서드는 @ExceptionHandler()에 매핑해놓은 예외를 처리한다.
+	
+	- 컨트롤러처럼 Model등을 받아서 사용할 수 있고, 리턴값은 View의 위치를 찾는데에 활용된다.
