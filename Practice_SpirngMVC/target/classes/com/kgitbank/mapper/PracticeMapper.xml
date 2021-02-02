@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kgitbank.mapper.PracticeMapper">
+  <select id="getNameBySalary" resultType="com.kgitbank.model.Employee">
+    SELECT * FROM employees2 WHERE salary > #{salary}
+  </select>
+  
+  <update id="changeSalary">
+  	UPDATE employees2 SET salary = salary + #{increment} WHERE employee_id = #{search_id}
+  </update>
+  
+  <update id="changeSalary2">
+  	UPDATE 
+  		employees2 
+  	SET 
+  		salary = salary + #{increment} 
+  	WHERE 
+	  	<choose>
+	  		<when test="employee_id != null">
+	  			employee_id = #{employee_id}
+	  		</when>
+	  		<when test="job_id != null">
+	  			job_id = #{job_id}
+	  		</when>
+	  		<when test="manager_id != null">
+	  			manager_id = #{manager_id}
+	  		</when>
+	  		<when test="department_id != null">
+	  			department_id = #{department_id}
+	  		</when>
+	  		<otherwise>
+	  			1 = 0
+	  		</otherwise>
+  		</choose>
+  </update>
+  
+  <delete id="deleteEmployeeById">
+  	DELETE FROM employees2 WHERE employee_id = #{emp_id}
+  </delete>
+  
+  <insert id="saveEmployee">
+  	INSERT INTO 
+  		employees2 
+  	VALUES (
+  		<!-- NULL 값이 들어갈수 있는 곳에, jdbcType=~~~~를 붙여준다. -->
+		#{employee_id}, <!-- seq.nextval -->
+		#{first_name},
+		#{last_name},
+		#{email},
+		#{phone_number},
+		#{hire_date}, <!-- sysdate -->
+		#{job_id},
+		#{salary},
+		#{commission_pct},
+		#{manager_id},
+		#{department_id}
+	)
+  </insert>
+  
+  <select id="getJoinMap" resultType="hashMap">
+  	SELECT * FROM employees2 e INNER JOIN departments d USING (department_id)
+  </select>
+  
+</mapper>

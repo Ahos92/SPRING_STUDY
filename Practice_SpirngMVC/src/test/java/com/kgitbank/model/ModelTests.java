@@ -18,11 +18,9 @@ public class ModelTests {
 		
 		emp.setFirst_name("길동");
 		emp.setLast_name("홍");
-		emp.setEmployee_name("의적");
 		
 		emp2.setFirst_name("길동");
 		emp2.setLast_name("홍");
-		emp2.setEmployee_name("의적");
 
 		// 레벨 설정
 //		log.setLevel(Level.WARN);
