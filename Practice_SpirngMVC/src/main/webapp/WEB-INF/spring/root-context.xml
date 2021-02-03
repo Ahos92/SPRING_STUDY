@@ -36,10 +36,11 @@
 	</bean>
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
-	<context:component-scan base-package="com.kgitbank.model"></context:component-scan>
+	<context:component-scan base-package="com.kgitbank.model"/>
+	<context:component-scan base-package="com.kgitbank.service"/>
 	
 	<!-- namespace에 mybatis 추가후 스캔 -->
-	<mybatis-spring:scan base-package="com.kgitbank.mapper"></mybatis-spring:scan>
+	<mybatis-spring:scan base-package="com.kgitbank.mapper"/>
 	
 </beans>
 

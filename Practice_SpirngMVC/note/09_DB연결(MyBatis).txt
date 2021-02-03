@@ -1,0 +1,92 @@
+
+# DB연결에 필요한 객체들을 spring-context에 bean으로써 등록해놓고 사용하는 것이 좋다
+
+	※ HikariCP
+		<!-- driver 사용시 (기본) -->
+		<bean id="config" class="com.zaxxer.hikari.HikariConfig">
+			<property name="driverClassName" value="oracle.jdbc.OracleDriver" />
+			<property name="jdbcUrl" value="jdbc:oracle:thin:@localhost:1521/XEPDB1"/>
+			<property name="username" value="hr"/>
+			<property name="password" value="hr"/>
+		</bean>
+		
+		<!-- dataSource 사용시 (property를 사용한 좀더 세부적인 연결) -->
+		<bean id="config2" class="com.zaxxer.hikari.HikariConfig">
+			<property name="dataSourceClassName" value="oracle.jdbc.pool.OracleDataSource" />
+			<property name="dataSourceProperties">
+				<props>
+					<prop key="user">hr</prop>
+					<prop key="password">hr</prop>
+					<prop key="url">jdbc:oracle:thin:@localhost:1521/XEPDB1</prop>
+				</props>
+			</property>
+		</bean>
+		
+		
+	※ 생성한 HikariCP 인스턴스를 HikariDataSource에 전달하면 해당 설정을 이용해 
+	  Connection을 꺼내올 수 있는 DataSource(DB Pool)을 생성해 준다. (참조 - ref="빈 아이디")
+	  	   
+		<bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource">
+			<constructor-arg ref="config2" />
+		</bean>
+		
+		
+	※ 생성한 DBPool을 마이바티스의 SqlSessionFactoryBean에 전달하면 
+	   SqlSession을 open할 때 전달한 풀에서 꺼낸 Connection을 사용한다.
+	  		│
+	  		└ 필요한 정보만 전달하면 마이바티스에서 pstmt, execute, rs, binding등의 뻔한 jdbc 코드들을 알아서 생성해주는 클래스
+	  		
+		<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		  <property name="dataSource" ref="dataSource" />
+		</bean>
+		
+		<!-- namespace에 mybatis 추가 / 스캔 -->
+		<mybatis-spring:scan base-package="com.kgitbank.mapper"></mybatis-spring:scan>
+		
+----------------------------------------------------------------------------------------------------------------------		
+		
+# Mybatis의 Mapper
+	
+	1. Mapper를 인터페이스를 이용해 리턴타입, 파라미터 타입 및 개수를 결정해 둔다.
+	2. 어노테이션 또는 Mapper.xml을 통해 쿼리문을 매핑시킨다.
+	3. Mybatis를 프로그래머가 정의해둔 정보들을 바탕으로 뻔한 JDBC코드들을 생성한다.
+		
+----------------------------------------------------------------------------------------------------------------------
+
+# Mapper interface
+
+	- insert, update, delete문의 메서드는 리턴타입을 int로 정의한다.
+	- 여러 행을 반환 받는 select문 메서드는 List타입으로 정의한다.
+	- 하나의 행을 반환받는 select문 메서드는 VO타입 또는 Map타입으로 정의한다.
+	- 파라미터에 VO를 전달하면 어노테이션 또는 xml에서 #{필드명}을 통해 쉽게 이용할 수 있다.
+	- 두 개 이상의 파라미터를 전달 할 때 
+		param1, 2 ... / arg0 , 1 ... / @Param("파라미터명")을 사용해 전달한다.
+			└ #{param1} , #{arg0}, #{파라미터명}
+----------------------------------------------------------------------------------------------------------------------
+
+# Mapper.xml
+
+	※ mapper태그 namespace 속성에 인터페이스 경로를 적어둔다.
+		
+		<mapper namespace="com.kgitbank.mapper.EmployeeMapper">				
+			  
+		※ mapper태그 내부에 인터페이스에 작성한 메서드에 매핑시킬 쿼리문을 추가한다.
+			( resultType으로 다양한 리턴타입을 정해줄 수 있다. )	
+		
+			  <select id="getEmployeeMap" resultType="hashMap">
+			  	SELECT * FROM employees
+			  </select>
+			  	
+		※ select문을 제외한 쿼리문들은 기본 인트값 리턴
+		
+			  <insert id="메서드명"> 쿼리문 </insert>
+			  <update id="메서드명"> 쿼리문 </update>
+			  <delete id="메서드명"> 쿼리문 </delete>
+		
+		※ 파라미터로 null이 전달될 가능성이 있는 #{}에는 jdbcType을 반드시 정해주어야함 ( java.sql.JdbcType ... )
+			  
+		</mapper>
+
+----------------------------------------------------------------------------------------------------------------------
+
+# Mybatis에서 JSTL처럼 if, choose 등을 사용할 수 있다. (공식문서 Dynamic SQL 참조)

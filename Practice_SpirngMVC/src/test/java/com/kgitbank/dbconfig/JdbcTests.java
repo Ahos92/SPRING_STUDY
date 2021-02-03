@@ -10,6 +10,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;
+import java.util.List;
 
 import javax.sql.DataSource;
 
@@ -258,6 +259,7 @@ public class JdbcTests {
 	
 	
 	@Test
+	@Ignore
 	public void testUpdate2_5() {	
 		ChangeSalaryDTO dto = new ChangeSalaryDTO();
 		
@@ -276,6 +278,39 @@ public class JdbcTests {
 		log.info(prac_mapper.getJoinMap());
 	}
 
-
+	@Test
+	@Ignore
+	public void testTenEmployees() {
+		List<Employee> page = emp_mapper.getPageEmployeeList(1, 10); // 1 페이지 10명
+		
+		assertEquals(10, page.size());
+		
+		for (Employee emp : page) {
+			log.info(emp);
+		}	
+	}
+	
+	@Test
+	@Ignore
+	public void testTenEmployees2() {
+		List<Employee> page = emp_mapper.getPageEmployeeList(2, 10); // 2페이지 10명
+		
+		assertEquals(10, page.size());
+		
+		for (Employee emp : page) {
+			log.info(emp);
+		}	
+	}
+	
+	@Test
+	public void testEmployeesNumber() {
+		List<Employee> list = emp_mapper.getEmployeeList(); // 2페이지 10명
+		
+		assertEquals(107, list.size());
+		
+		for (Employee emp : list) {
+			log.info(emp);
+		}	
+	}
 	
 }

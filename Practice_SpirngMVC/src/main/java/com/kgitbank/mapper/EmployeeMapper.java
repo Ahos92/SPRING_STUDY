@@ -3,6 +3,7 @@ package com.kgitbank.mapper;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
 import com.kgitbank.model.Employee;
@@ -23,4 +24,13 @@ public interface EmployeeMapper {
 	
 	List<Map<String, Object>> getEmployeeMap();
 	
+	List<Employee> getPageEmployeeList(
+					@Param("page") int page,
+					@Param("amount") int amount);
+	
+	int addEmployee(Employee emp);
+	
+	int deleteEmployeeById(int emp_id);
+	
+	int updateEmployee(Employee emp);
 }

@@ -4,14 +4,61 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.kgitbank.mapper.EmployeeMapper">
   <select id="getEmployeeById" resultType="com.kgitbank.model.Employee">
-    SELECT * FROM employees WHERE employee_id = #{id}
+    SELECT * FROM employees2 WHERE employee_id = #{id}
   </select>
   
   <select id="getEmployeeList" resultType="com.kgitbank.model.Employee">
-	SELECT * FROM employees
+	SELECT * FROM employees2
   </select>
   
   <select id="getEmployeeMap" resultType="hashMap">
-  	SELECT * FROM employees
+  	SELECT * FROM employees2
   </select>
+  
+  <select id="getPageEmployeeList" resultType="com.kgitbank.model.Employee">
+  	SELECT * FROM employees2 ORDER BY employee_id 
+  	OFFSET (#{page} - 1) * #{amount} ROWS FETCH FIRST #{amount} ROWS ONLY
+  </select>	
+
+  <insert id="addEmployee">
+  	INSERT INTO 
+  		employees2 
+  	VALUES (
+  		<!-- NULL 값이 들어갈수 있는 곳에, jdbcType=~~~~를 붙여준다. -->
+		#{employee_id}, <!-- seq.nextval -->
+		#{first_name},
+		#{last_name},
+		#{email},
+		#{phone_number},
+		#{hire_date}, <!-- sysdate -->
+		#{job_id},
+		#{salary},
+		#{commission_pct},
+		#{manager_id},
+		#{department_id}
+	)
+   </insert>
+
+	<delete id="deleteEmployeeById">
+  	DELETE FROM employees2 WHERE employee_id = #{emp_id}
+  </delete>
+
+  <update id="updateEmployee">
+  	UPDATE 
+  		employees2
+  	SET 
+  		<!-- NULL 값이 들어갈수 있는 곳에, jdbcType=~~~~를 붙여준다. -->
+		first_name = #{first_name},
+		last_name = #{last_name},
+		email = #{email},
+		phone_number = #{phone_number},
+		job_id = #{job_id},
+		salary = #{salary},
+		commission_pct = #{commission_pct},
+		manager_id = #{manager_id},
+		department_id = #{department_id}
+	WHERE
+		employee_id = #{employee_id}
+   </update>
+
 </mapper>

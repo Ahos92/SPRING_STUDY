@@ -2,6 +2,7 @@ package com.kgitbank.model;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 
 import lombok.Data;
@@ -22,6 +23,7 @@ public class Employee {
 	private String last_name;
 	private String email;
 	private String phone_number;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date hire_date;
 	private String job_id;
 	private double salary;
