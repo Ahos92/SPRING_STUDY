@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.kgitbank.mapper.EmployeeMapper;
 import com.kgitbank.model.Employee;
+import com.kgitbank.model.PageNation;
 import com.kgitbank.service.EmployeeService;
+import com.kgitbank.service.PageService;
 
 import lombok.extern.log4j.Log4j;
 
@@ -22,7 +24,10 @@ import lombok.extern.log4j.Log4j;
 public class EmployeesController {
 	
 	@Autowired
-	EmployeeService emp_service;	
+	EmployeeService emp_service;
+	@Autowired
+	PageService page_service;
+	
 	
 	@GetMapping("salinfo")
 	public String salinfo(Model model, int pk) {
@@ -30,19 +35,30 @@ public class EmployeesController {
 		log.info("Salary Info : " + pk);
 		return "emp/salinfo";
 	}
-	
-	
-	// URL은 각자 알아서 설정하기
-	// 1. 전체 사원 목록 보기 (10개씩 페이지 단위로 보기, 다음버튼, 이전버튼, 숫자버튼 구현)
-	// 2. 새로운 사원 추가하기
-	// 3. 기존의 사원 정보 수정하기
-	// 4. 사원 정보 삭제 하기
-	// 5. 더 추가하고 싶은 기능은 마음대로 추가해보기 
-	
+
+	// http://localhost:8080/practice_mvc/emp/index?page=1&amount=10
 	@GetMapping("index")
-	public String empIndex(Model model, int page) {	
-		model.addAttribute("list", emp_service.employeeList(page, 10));	
-		model.addAttribute("all", emp_service.employeeAllList());
+	public String empIndex(Model model, PageNation pagenation) {
+		int page = pagenation.getPage(), amount = pagenation.getAmount();
+		
+		model.addAttribute("list", emp_service.employeeList(pagenation));	
+		
+		int endPage = page_service.endPage(page);
+		int lastPage = page_service.lastPage(amount);
+		
+		endPage = endPage > lastPage ? lastPage : endPage;
+		
+		// 현제 페이지, 전 활성화, 넥스트 활성화, 시작 번호, 마지막 번호
+		model.addAttribute("pageNation", PageService.PAGINATION_SIZE);
+		model.addAttribute("currPage", page);
+		model.addAttribute("amount", amount);
+		model.addAttribute("startPage", page_service.startPage(page));
+		model.addAttribute("endPage", endPage);
+		model.addAttribute("lastPage", lastPage);
+		
+		model.addAttribute("previous", page_service.prevPage(page));
+		model.addAttribute("next", page_service.nextPage(page, amount));
+		
 		return "emp/index";
 	}
 	
@@ -53,7 +69,8 @@ public class EmployeesController {
 	}
 	
 	@PostMapping("addpage")
-	public String addPageEmp() {
+	public String addPageEmp(Model model) {
+		model.addAttribute("nextId", emp_service.getEmployeeId());
 		
 		return "emp/addpage";
 	}
@@ -80,9 +97,9 @@ public class EmployeesController {
 	}
 	
 	@PostMapping("update")
-	public String update(Model model, Employee emp, Date hire_date) {
-		
-		model.addAttribute("emp", emp_service.updateEmployee(emp));
+	public String update(Model model, Employee emp) {
+		model.addAttribute("row", emp_service.updateEmployee(emp));
+		model.addAttribute("emp", emp_service.salaryInformation(emp.getEmployee_id()));
 		return "emp/update";
 	}
 	

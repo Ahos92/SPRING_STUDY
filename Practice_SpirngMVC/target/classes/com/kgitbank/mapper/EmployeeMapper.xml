@@ -61,4 +61,12 @@
 		employee_id = #{employee_id}
    </update>
 
+	<select id="getEmployeeCount" resultType="Integer">
+		SELECT count(*) FROM employees2
+	</select>
+	
+	<select id="getEmployeeMaxId" resultType="Integer">
+		SELECT MAX(employee_id) from employees2
+	</select>
+
 </mapper>

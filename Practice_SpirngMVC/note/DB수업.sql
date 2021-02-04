@@ -10,14 +10,22 @@ SELECT * FROM user_constraints WHERE table_name = 'EMPLOYEES2' ;
 
 select * from  employees2 e INNER JOIN departments d USING ( department_id );
 
+select * from employees2 order by employee_id desc;
 
+DESC jobs;
+
+SELECT MAX(employee_id) from employees2;
+
+CREATE SEQUENCE emp2_seq START WITH 209 MINVALUE 209 NOCACHE;
+
+drop sequence emp2_seq;
 
 /*
-    OFFSET : 시작번호 ROWS FETCH FIRST 한페이지에 나올 행의 개수 ROWS ONLY;
+    OFFSET : [(pageNum - 1) * amount] ROWS FETCH FIRST 한페이지에 나올 행의 개수 ROWS ONLY;
     오라클 12C버전부터 사용 가능
 */
 SELECT * FROM employees ORDER BY employee_id
-OFFSET 31 ROWS FETCH FIRST 10 ROWS ONLY;
+OFFSET 20 ROWS FETCH FIRST 10 ROWS ONLY;
 
 
 /*

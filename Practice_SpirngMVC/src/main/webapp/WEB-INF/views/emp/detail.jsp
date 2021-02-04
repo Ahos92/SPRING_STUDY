@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,38 +12,86 @@
 </head>
 <body>
 
-<h1>상세 페이지</h1>
-
+<h1 class="text-center">상세 페이지</h1>
+<div class="d-flex justify-content-center">
 <div class="card" style="width: 30rem;">
-  <img src="/some/둘리웃음.png" class="card-img-top" alt="사진">
   <div class="card-body">
     <p class="card-text">
-    <ul>
-    	<li>ID : ${emp.employee_id }</li>
-    	<li>Name : ${emp.first_name }'s ${emp.last_name }</li>
-    	<li>Email : ${emp.email }</li>
-    	<li>Tel : ${emp.phone_number }</li>
-    	<li>Hire_date : ${emp.hire_date }</li>
-    	<li>Job_ID : ${emp.job_id }</li>
-    	<li>Salary : ${emp.salary }</li>
-    	<li>Commission_pct : ${emp.commission_pct }</li>
-    	<li>Manager_ID : ${emp.manager_id }</li>
-    	<li>Department_ID : ${emp.department_id }</li>
-    </ul>
+    <table class="table table-success table-striped">
+  		<thead>
+	    <tr>
+	       <th scope="col">#</th>
+	       <th scope="col">#</th>
+	    </tr>
+	    </thead>
+	    <tbody>
+	    <tr>
+	      <th scope="row">ID</th>
+	      <td>${emp.employee_id }</td>
+	    </tr>
+	     <tr>
+	      <th scope="row">Name</th>
+	      <td>${emp.first_name }'s ${emp.last_name }</td>
+	    </tr>
+	     <tr>
+	      <th scope="row">Email</th>
+	      <td>${emp.email }</td>
+	    </tr>
+	     <tr>
+	      <th scope="row">Tel</th>
+	      <td>${emp.phone_number }</td>
+	    </tr>
+	     <tr>
+	      <th scope="row">Hire_date</th>
+	      <td><fmt:formatDate value="${emp.hire_date }" pattern="yyyy-MM-dd"/></td>
+	    </tr>
+	     <tr>
+	      <th scope="row">Job_ID</th>
+	      <td>${emp.job_id }</td>
+	    </tr>
+	       <tr>
+	      <th scope="row">Salary</th>
+	      <td>${emp.salary }</td>
+	    </tr>
+	       <tr>
+	      <th scope="row">Commission_pct</th>
+	      <td>${emp.commission_pct }</td>
+	    </tr>
+	       <tr>
+	      <th scope="row">Manager_ID</th>
+	      <td>${emp.manager_id }</td>
+	    </tr>
+	       <tr>
+	      <th scope="row">Department_ID</th>
+	      <td>${emp.department_id }</td>
+	    </tr>
+	    </tbody>
+	</table>
     </p>
   </div>
 </div>
+</div>
 
-
-<form action="./updatepage" method="POST">
-<input type="hidden" name="id" value="${emp.employee_id}" />
-<input class="btn btn-primary" type="submit" value="수정">
-</form>
-
-<form action="./delete" method="POST">
-<input type="hidden" name="id" value="${emp.employee_id}" />
-<input class="btn btn-danger" type="submit" value="삭제">
-</form>
+<div class="d-flex justify-content-center">
+	
+	<div class="">
+	<form action="./updatepage" method="POST">
+	<input type="hidden" name="id" value="${emp.employee_id}" />
+	<input class="btn btn-primary" type="submit" value="수정">
+	</form>
+	</div>
+	
+	<div class="ps-1 pe-5">
+	<form action="./delete" method="POST">
+	<input type="hidden" name="id" value="${emp.employee_id}" />
+	<input class="btn btn-danger" type="submit" value="삭제">
+	</form>
+	</div>
+	
+	<div class="px-5 ps-5">
+	<a class="btn btn-success" href="./index?page=1&amount=10">돌아가기</a>
+	</div>
+</div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" 
 	integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" 

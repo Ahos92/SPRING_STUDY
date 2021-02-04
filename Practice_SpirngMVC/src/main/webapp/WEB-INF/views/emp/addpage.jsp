@@ -17,7 +17,7 @@
 <form action="./add" method="POST">
 	<div class="input-group input-group-sm mb-3">
 	  <span class="input-group-text" id="inputGroup-sizing-sm">Employee_ID</span>
-	  <input type="text" readonly value="208" name="employee_id" class="form-control" aria-describedby="inputGroup-sizing-sm">
+	  <input type="text" readonly value="${nextId }" name="employee_id" class="form-control" aria-describedby="inputGroup-sizing-sm">
 	</div>
 	
 	<div class="input-group input-group-sm mb-3">
@@ -84,7 +84,7 @@
 	
 	<div class="pb-2">
 		<input class="btn btn-primary" type="submit" value="추가" /> 
-		<a class="btn btn-danger" href="./index?page=1">취소</a>
+		<a class="btn btn-danger" href="./index?page=1&amount=10">취소</a>
 	</div>
 </form>
 

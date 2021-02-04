@@ -24,6 +24,7 @@ public interface EmployeeMapper {
 	
 	List<Map<String, Object>> getEmployeeMap();
 	
+	// 데이터모델 클래스 만들어서 객체로 보내기!!
 	List<Employee> getPageEmployeeList(
 					@Param("page") int page,
 					@Param("amount") int amount);
@@ -33,4 +34,8 @@ public interface EmployeeMapper {
 	int deleteEmployeeById(int emp_id);
 	
 	int updateEmployee(Employee emp);
+	
+	int getEmployeeCount();
+
+	int getEmployeeMaxId();
 }

@@ -28,6 +28,7 @@ import com.kgitbank.mapper.EmployeeMapper;
 import com.kgitbank.mapper.PracticeMapper;
 import com.kgitbank.model.ChangeSalaryDTO;
 import com.kgitbank.model.Employee;
+import com.kgitbank.service.PageService;
 
 import lombok.extern.log4j.Log4j;
 
@@ -47,6 +48,9 @@ public class JdbcTests {
 	private PracticeMapper prac_mapper;
 	@Autowired
 	private Employee employee;
+	
+	@Autowired
+	PageService page_service;
 	
 	@Before
 	@Ignore
@@ -285,9 +289,12 @@ public class JdbcTests {
 		
 		assertEquals(10, page.size());
 		
-		for (Employee emp : page) {
-			log.info(emp);
-		}	
+		// 자바의 ArrowFunction
+		page.forEach(emp -> log.info(emp));	
+//		for (Employee emp : page) {
+//			log.info(emp);
+//		}	
+		
 	}
 	
 	@Test
@@ -303,6 +310,7 @@ public class JdbcTests {
 	}
 	
 	@Test
+	@Ignore
 	public void testEmployeesNumber() {
 		List<Employee> list = emp_mapper.getEmployeeList(); // 2페이지 10명
 		
@@ -313,4 +321,22 @@ public class JdbcTests {
 		}	
 	}
 	
+	@Test
+	@Ignore
+	public void testCount() {
+		int cnt = emp_mapper.getEmployeeCount();
+		
+		assertEquals(108, cnt);
+		
+		log.info(cnt);
+	}
+	
+	@Test
+	public void testServiceCount() {
+		int cnt = page_service.startPage(9);
+		
+		assertEquals(8, cnt);
+		
+		log.info(cnt);
+	}
 }

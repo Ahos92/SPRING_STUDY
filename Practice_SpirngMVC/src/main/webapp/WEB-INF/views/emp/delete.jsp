@@ -10,7 +10,7 @@
 
 <h1>삭제 완료</h1>
 
-<a href="./index?page=1">돌아가기</a>
+<a href="./index?page=1&amount=10">돌아가기</a>
 
 </body>
 </html>

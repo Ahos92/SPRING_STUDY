@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.kgitbank.mapper.EmployeeMapper;
 import com.kgitbank.model.Employee;
+import com.kgitbank.model.PageNation;
 
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
@@ -24,8 +25,8 @@ public class EmployeeServiceImpl implements EmployeeService {
 	}
 	
 	@Override
-	public List<Employee> employeeList(int page, int amount) {
-		return emp_mapper.getPageEmployeeList(page, amount);
+	public List<Employee> employeeList(PageNation pagenation) {
+		return emp_mapper.getPageEmployeeList(pagenation.getPage(), pagenation.getAmount());
 	}
 	
 	@Override
@@ -49,6 +50,14 @@ public class EmployeeServiceImpl implements EmployeeService {
 		return emp_mapper.deleteEmployeeById(emp_id);
 	}
 
-	
-	
+	@Override
+	public int allEmployeeCount() {
+		return emp_mapper.getEmployeeCount();
+	}
+
+	@Override
+	public int getEmployeeId() {
+		return emp_mapper.getEmployeeMaxId() + 1;
+	}
+
 }

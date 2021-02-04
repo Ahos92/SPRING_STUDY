@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -36,8 +37,14 @@
 	  <input type="text" class="form-control" name="phone_number" value="${emp.phone_number }" aria-describedby="inputGroup-sizing-sm">
 	</div>
 
+	<div class="input-group input-group-sm mb-3">
+	  <span class="input-group-text" id="inputGroup-sizing-sm">Hire_date</span>
+	  <input readonly type="text" class="form-control" name="hire_date" 
+	 		 value="<fmt:formatDate value="${emp.hire_date }" pattern="yyyy-MM-dd"/>" aria-describedby="inputGroup-sizing-sm">
+	</div>
+	
 	<select class="form-select form-select-sm mb-3" name="job_id" aria-label=".form-select-sm example">
-	  <option selected value="0">Job_id</option>
+	  <option selected>${emp.job_id }</option>
 	  <option>AD_ASST</option>
 	  <option>FI_MGR</option>
 	  <option>FI_ACCOUNT</option>
