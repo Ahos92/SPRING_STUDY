@@ -55,9 +55,20 @@ public class EmployeeServiceImpl implements EmployeeService {
 		return emp_mapper.getEmployeeCount();
 	}
 
+
 	@Override
-	public int getEmployeeId() {
-		return emp_mapper.getEmployeeMaxId() + 1;
+	public List<Employee> jobIdList() {
+		return emp_mapper.getJobIdList();
+	}
+
+	@Override
+	public List<Employee> managerIdList() {
+		return emp_mapper.getManagerIdList();
+	}
+
+	@Override
+	public List<Employee> departmentIdList() {
+		return emp_mapper.getDepartmentIdList();
 	}
 
 }

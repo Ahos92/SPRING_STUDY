@@ -37,5 +37,9 @@ public interface EmployeeMapper {
 	
 	int getEmployeeCount();
 
-	int getEmployeeMaxId();
+	List<Employee> getJobIdList();
+	
+	List<Employee> getManagerIdList();
+	
+	List<Employee> getDepartmentIdList();
 }

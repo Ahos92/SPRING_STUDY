@@ -16,9 +16,22 @@ DESC jobs;
 
 SELECT MAX(employee_id) from employees2;
 
-CREATE SEQUENCE emp2_seq START WITH 209 MINVALUE 209 NOCACHE;
+CREATE SEQUENCE emp2_seq START WITH 208 MINVALUE 208 NOCACHE;
 
 drop sequence emp2_seq;
+
+SELECT * FROM user_sequences;
+
+select emp2_seq.nextval from dual;
+
+select emp2_seq.currval from dual;
+
+
+select DISTINCT manager_id from employees2 where manager_id > 0;
+
+select DISTINCT job_id from employees2;
+
+select DISTINCT department_id from employees2 where department_id > 0;
 
 /*
     OFFSET : [(pageNum - 1) * amount] ROWS FETCH FIRST 한페이지에 나올 행의 개수 ROWS ONLY;

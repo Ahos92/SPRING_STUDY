@@ -332,11 +332,21 @@ public class JdbcTests {
 	}
 	
 	@Test
+	@Ignore
 	public void testServiceCount() {
 		int cnt = page_service.startPage(9);
 		
 		assertEquals(8, cnt);
 		
 		log.info(cnt);
+	}
+	
+	@Test
+	public void testIdlist() {
+		assertTrue(emp_mapper.getManagerIdList().size() > 0);
+		assertTrue(emp_mapper.getDepartmentIdList().size() > 0);
+		
+		log.info(emp_mapper.getManagerIdList().get(0).getManager_id());
+		log.info(emp_mapper.getDepartmentIdList().get(0).getDepartment_id());
 	}
 }

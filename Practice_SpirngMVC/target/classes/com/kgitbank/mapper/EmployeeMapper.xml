@@ -25,17 +25,17 @@
   		employees2 
   	VALUES (
   		<!-- NULL 값이 들어갈수 있는 곳에, jdbcType=~~~~를 붙여준다. -->
-		#{employee_id}, <!-- seq.nextval -->
+		emp2_seq.nextval,
 		#{first_name},
 		#{last_name},
 		#{email},
 		#{phone_number},
-		#{hire_date}, <!-- sysdate -->
+		sysdate,
 		#{job_id},
 		#{salary},
-		#{commission_pct},
-		#{manager_id},
-		#{department_id}
+		#{commission_pct, jdbcType=DOUBLE},
+		#{manager_id, jdbcType=NUMERIC},
+		#{department_id, jdbcType=NUMERIC}
 	)
    </insert>
 
@@ -64,9 +64,17 @@
 	<select id="getEmployeeCount" resultType="Integer">
 		SELECT count(*) FROM employees2
 	</select>
-	
-	<select id="getEmployeeMaxId" resultType="Integer">
-		SELECT MAX(employee_id) from employees2
+
+	<select id="getJobIdList" resultType="com.kgitbank.model.Employee">
+		select DISTINCT job_id from employees2 order by job_id
 	</select>
 
+	<select id="getManagerIdList" resultType="com.kgitbank.model.Employee">
+		select DISTINCT manager_id from employees2 where manager_id > 0 order by manager_id
+	</select>
+	
+	<select id="getDepartmentIdList" resultType="com.kgitbank.model.Employee">
+		select DISTINCT department_id from employees2 where department_id > 0 order by department_id
+	</select>
+	
 </mapper>

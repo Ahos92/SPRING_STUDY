@@ -27,5 +27,9 @@ public interface EmployeeService {
 	
 	public int allEmployeeCount();
 	
-	public int getEmployeeId();
+	public List<Employee> jobIdList();
+	
+	public List<Employee> managerIdList();
+	
+	public List<Employee> departmentIdList();
 }

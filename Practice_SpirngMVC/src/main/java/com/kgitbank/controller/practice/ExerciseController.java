@@ -73,4 +73,10 @@ public class ExerciseController {
 		
 		return "redirect:/session/";
 	}
+	
+	
+	@GetMapping("test2")
+	public String test2() {
+		return "exercise/resourceImg";
+	}
 }
