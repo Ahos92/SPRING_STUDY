@@ -22,16 +22,19 @@ drop sequence emp2_seq;
 
 SELECT * FROM user_sequences;
 
+select sysdate from dual;
+
 select emp2_seq.nextval from dual;
 
 select emp2_seq.currval from dual;
 
+select manager_id, job_id from employees2;
 
-select DISTINCT manager_id from employees2 where manager_id > 0;
+select DISTINCT manager_id from employees2 where manager_id > 0 order by manager_id;
 
-select DISTINCT job_id from employees2;
+select DISTINCT job_id from employees2 order by job_id;
 
-select DISTINCT department_id from employees2 where department_id > 0;
+select DISTINCT department_id from employees2 where department_id > 0 order by department_id;
 
 /*
     OFFSET : [(pageNum - 1) * amount] ROWS FETCH FIRST 한페이지에 나올 행의 개수 ROWS ONLY;

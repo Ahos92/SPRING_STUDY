@@ -1,0 +1,36 @@
+
+ # REST (Representational State Transfer)
+ 
+ 	- URI + method를 이용해 자원을 관리하자는 패러다임
+ 	- GET, POST, PUT, PATCH, DELETE 메서드를 최대한 활용한다.
+	 	POST (CREATE)
+	 	GET (READ)
+	 	PUT/PATCH (UPDATE)
+	 	DELETE (DELETE)
+	 	
+	- 하나의 URI만 가지고도 CRUD를 모두 구현할 수 있다.
+	- 이 형식을 따른 시스템을 RESTful이라고 한다.
+	- RESTful을 따르면 웹서버가 웹 브라우저 뿐만이 아니라 모바일 앱과도 연결될 수 있다.
+	
+---------------------------------------------------------------------
+
+# REST관련 어노테이션
+
+	@RestController - Controller가 REST방식 컨트롤러임을 명시	
+	@ResponseBody - 일반적인 뷰 응답(.jsp) 대신 데이터 응답을 생성한다.
+	@RequestBody - 요청에 실려온 JSON 형태의 데이터를 원하는 타입으로 바인딩 한다.
+	
+# pom.xml
+
+	※ 데이터 클래스 -> JSON, XML 
+		JSON, XML -> 데이터 클래스
+	- jackson-databind
+	- jackson-dataformat-xml
+	
+	※ 편리하게 자바에서 JSON타입을 다룰 수 있는 라이브러리
+	- gson
+	
+	
+	
+	
+	
