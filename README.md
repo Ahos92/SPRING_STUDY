@@ -59,6 +59,7 @@
 ## ê³„ì¸µ
 
 ## REST
+<<<<<<< HEAD
  ### REST??
   - Mapping?´ë¦„ìœ¼ë¡? URI?˜ë¯¸ë?? ?‘œ?˜„
 	- ?´ ?˜•?‹?„ ?”°ë¥? ?‹œ?Š¤?…œ?„ RESTful?´?¼ê³? ?•œ?‹¤.
@@ -113,4 +114,6 @@ public ResponseEntity<Employee> createEmployee(@RequestBody Employee new_emp) {
  // 
  xhr.send // 2
  ```
+=======
+>>>>>>> refs/remotes/origin/main
  
