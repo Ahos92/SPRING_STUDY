@@ -82,3 +82,23 @@ public ResponseEntity<Employee> createEmployee(@RequestBody Employee new_emp) {
 - Jackson-databind와 함께 사용하면 JSON 또는 XML로 전달된 데이터를 간편하게 VO로 변환해준다.
 
 ## Ajax
+ ### Asynchronous JavaScript and XML (or JSON) / 웹서버 비동기 통신
+ - 페이지를 변화시키지 않으면서 웹 서버로 요청을 보낸다.
+ - 보낸 요청이 도착하면 readyState값이 변한다.
+ - readyState값 0-UNSET / 1-OPEND / 2-SEND / 3-LOADING / 4-DONE 
+ 
+ ### 예제
+ ```javascript
+ // 요청 객체
+ xhr = new XMLHttpRequest();
+ 
+ // readtState 변화 감지이벤트
+ xhr.onreadystatechange = function() {}
+ 
+ // 매핑 방식, 주소, 비동기 여부
+ xhr.open('GET/POST/...', uri, true) // 1
+ 
+ // 
+ xhr.send // 2
+ ```
+ 
