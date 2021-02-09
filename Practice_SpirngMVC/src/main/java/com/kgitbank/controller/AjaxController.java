@@ -15,4 +15,9 @@ public class AjaxController {
 	public void emp() {
 		
 	}
+	
+	@GetMapping("/ajax/newemp")
+	public void newEmp() {
+		
+	}
 }

@@ -31,6 +31,16 @@
 	- gson
 	
 	
+	@RestController
+		- 일반 컨트롤러와 다르게 뷰로 포워드하지 않고 데이터를 바로 반환하는 컨트롤러
+		- 일반 컨트롤러에서 @ResposneBody 어노테이션을 사용해 적용할 수도 있다.
+		 
+	@RequestBody
+		- Jackson-databind와 함께 사용하면 JSON 또는 XML로 전달된 데이터를 간편하게 VO로 변환해준다.
+		-
+	
+	
+	
 	
 	
 	
