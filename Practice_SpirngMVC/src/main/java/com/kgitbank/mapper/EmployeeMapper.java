@@ -42,4 +42,6 @@ public interface EmployeeMapper {
 	List<Employee> getManagerIdList();
 	
 	List<Employee> getDepartmentIdList();
+	
+	int updateSalary(int emp_id);
 }
