@@ -1,4 +1,4 @@
-# SPRING_MVC 기초
+# <span style="color: green;">SPRING_MVC 기초</span>
 
  **[프로젝트구조](#프로젝트-구조)** 
  
@@ -15,8 +15,8 @@
  - **[Ajax](#Ajax)** <br>
 
 
-## 프로젝트 구조
->![projectStandard](./img/프로젝트구조패키지.png)	![projectStandard](./img/프로젝트구조패키지.png)
+## <span style="color: green;">프로젝트 구조</span>
+>![projectStandard](./img/프로젝트구조패키지.png)
 >- src/main/java : 자바 코드를 작성하는곳 <br>	- src/main/java : 자바 코드를 작성하는곳 <br>
 >- src/main/resources : 자바 코드를 실행할 때 필요한 파일들을 보관하는 곳	- src/main/resources : 자바 코드를 실행할 때 필요한 파일들을 보관하는 곳
 
@@ -32,23 +32,28 @@
 >- pom.xml : Maven 설정 파일	- pom.xml : Maven 설정 파일
 >- target : 실제로 만들어질 프로젝트를 미리 볼 수 있음	- target : 실제로 만들어질 프로젝트를 미리 볼 수 있음
 
-## Maven
-
-## Lombok
+## <span style="color: green;">Maven</sapn>
+ ### 프로젝트 빌드 / 배포 / 라이브러리 관리 자동화 프로그램
+ ### pom.xml의 설정대로 관리
+## <span style="color: green;">Lombok</span>
   
-## Log4j
+## <span style="color: green;">Log4j</span>
  
-## Junit
+## <span style="color: green;">Junit</span>
   
-## 의존성 주입
+## <span style="color: green;">의존성 주입</span>
 
-## SpringMVC
+## <span style="color: green;">SpringMVC</span>
  
-## 계층
+## <span style="color: green;">계층</span>
 
-## 컨트롤러
+## <span style="color: green;">컨트롤러</span>
 
-## DB연결
+## <span style="color: green;">DB연결</span>
+
+## <span style="color: green;">Mybatis</span>
+
+## <span style="color: green;">Mapper</span>
 
 ## REST
  ### REST란
