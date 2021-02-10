@@ -26,30 +26,106 @@
   - servlet-context.xml : DispatcherServlet을 자바 코드없이 다룰 수 있는 설정 파  
 - pom.xml : Maven 설정 파일	- pom.xml : Maven 설정 파일
 - target : 실제로 만들어질 프로젝트를 미리 볼 수 있음
+---
 
 ## Maven
- #### 프로젝트 빌드 / 배포 / 라이브러리 관리 자동화 프로그램
- #### pom.xml의 설정대로 관리
+ #### 프로젝트 빌드 / 배포 / 라이브러리 관리 자동화 프로그램 - pom.xml 의 설정대로 관리
+ #### 메이븐이 관리하는 라이브러리들은 사용자 폴더/.m2/ 에 보관
+ 
+ - properties - 변수처럼 사용  	
+ ```xml
+	<properties>
+		<java-version>1.6</java-version>
+		<org.springframework-version>5.2.12.RELEASE</org.springframework-version>
+		<org.aspectj-version>1.6.10</org.aspectj-version>
+		<org.slf4j-version>1.6.6</org.slf4j-version>
+	</properties>
+ ```
+ - maven이 사용할 컴파일러 버전
+ ```xml
+    <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>2.5.1</version>
+        <configuration>
+            <source>${java-version}</source> <!-- 변수 java-version사용 -->
+            <target>${java-version}</target>
+            <compilerArgument>-Xlint:all</compilerArgument>
+            <showWarnings>true</showWarnings>
+            <showDeprecation>true</showDeprecation>
+        </configuration>
+    </plugin>
+ ```
+ 
+ #### Maven Repository 사이트 참조
+ - 라이브러리 dependencies태그 안에 추가
+ ```xml
+	<dependencies>
+	<dependency>
+	    <groupId>org.springframework</groupId> 		  <!-- 이 프로젝트(라이브러리)를 제작한 회사 -->
+		<artifactId>spring-context</artifactId> 	  <!-- 이 프로젝트의 Artifact ID -->
+		<version>${org.springframework-version}</version> <!-- 버전  -->
+		<exclusions>					  <!-- 의존에서 제외 시킬 항목을 설정 	-->
+		    <exclusion>
+			<groupId>commons-logging</groupId>
+			<artifactId>commons-logging</artifactId>
+		    </exclusion>
+		</exclusions>
+	</dependency>
+	</dependencies>
+ ```
+ 
+ - scope태그
+ ```xml
+	<!-- 라이브러리 -->
+	<scope>complie</scope> <!-- 기본값 / 빌드시 이용 / 배포시 제외 -->
+	<scope>test</scope>    <!-- 개발 도중 이용 / 배포시 제외-->
+	<scope>provide</scope> <!--  -->
+	<scope>runtime</scope> <!-- 실행 / 배포시 포함-->
+ ```
+ 
+ ---
+ 
 ## Lombok
-  
+ 
+ ---
+ 
 ## Log4j
  
+ ---
+ 
 ## Junit
-  
+ 
+ ---
+ 
 ## 의존성 주입
-
+ 
+ ---
+ 
 ## SpringMVC
+ 
+ ---
  
 ## 계층
 
+ ---
+ 
 ## 컨트롤러
 
+ ---
+ 
 ## DB연결
 
+ ---
+ 
 ## Mybatis
 
+ ---
+ 
 ## Mapper
 
+ ---
+ 
 ## REST
  #### REST란
   - Mapping이름으로 URI의미를 표현
@@ -83,6 +159,7 @@
 	public ResponseEntity<Employee> createEmployee(@RequestBody Employee new_emp) {
 ```
 - Jackson-databind와 함께 사용하면 JSON 또는 XML로 전달된 데이터를 간편하게 VO로 변환해준다.
+---
 
 ## Ajax
   #### Asynchronous JavaScript and XML (or JSON) / 웹서버 비동기 통신
