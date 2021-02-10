@@ -103,4 +103,35 @@ public ResponseEntity<Employee> createEmployee(@RequestBody Employee new_emp) {
  // 
  xhr.send // 2
  ```
- 
+ > ### Jquery
+ ```javascript
+ $("#id속성").click(function(){
+	$.ajax({
+		// 메서드 지정
+		type: "POST",
+		
+		// 매핑 경로
+		url: "/practice_mvc/rest/employee",	
+		
+		// JSON.stringify() - json 타입으로
+		data: JSON.stringify({
+			data1: $('[name="data1"]').val(),
+			// ...
+		}),
+		
+		// json 타입으로 넘김
+		contentType: 'application/json',
+		
+		// 성공 했을 때 메서드
+		success: function(){
+			alert('성공');
+		},
+		
+		// 실패 했을 때 메서드
+		error: function(){
+			alert('실패')	;
+		}
+	});
+	
+});
+ ```
