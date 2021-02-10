@@ -8,7 +8,7 @@
  **[SpringMVC](#SpringMVC)** 
  - **[계층](#계층)** / **[컨트롤러](컨트롤러)**
  
-**[DB연결](DB연결)**
+**[DB연결](#DB연결)**
  - **[Mybatis](#Mybatis)** / **[Mapper](#Mapper)**
  
  **[REST](#REST)**
