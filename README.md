@@ -15,7 +15,7 @@
  - **[Ajax](#Ajax)** <br>
 
 
-> ## <span style="color: green;">프로젝트 구조</span>
+## 프로젝트 구조
 >![projectStandard](./img/프로젝트구조패키지.png)
 >- src/main/java : 자바 코드를 작성하는곳 <br>	- src/main/java : 자바 코드를 작성하는곳 <br>
 >- src/main/resources : 자바 코드를 실행할 때 필요한 파일들을 보관하는 곳	- src/main/resources : 자바 코드를 실행할 때 필요한 파일들을 보관하는 곳
@@ -35,25 +35,25 @@
 ## <span style="color: green;">Maven</sapn>
  #### 프로젝트 빌드 / 배포 / 라이브러리 관리 자동화 프로그램
  #### pom.xml의 설정대로 관리
-## <span style="color: green;">Lombok</span>
+## Lombok
   
-## <span style="color: green;">Log4j</span>
+## Log4j
  
-## <span style="color: green;">Junit</span>
+## Junit
   
-## <span style="color: green;">의존성 주입</span>
+## 의존성 주입
 
-## <span style="color: green;">SpringMVC</span>
+## SpringMVC
  
-## <span style="color: green;">계층</span>
+## 계층
 
-## <span style="color: green;">컨트롤러</span>
+## 컨트롤러
 
-## <span style="color: green;">DB연결</span>
+## DB연결
 
-## <span style="color: green;">Mybatis</span>
+## Mybatis
 
-## <span style="color: green;">Mapper</span>
+## Mapper
 
 ## REST
  #### REST란
@@ -88,6 +88,7 @@
 public ResponseEntity<Employee> createEmployee(@RequestBody Employee new_emp) {
 ```
 - Jackson-databind와 함께 사용하면 JSON 또는 XML로 전달된 데이터를 간편하게 VO로 변환해준다.
+
 ## Ajax
   ### Asynchronous JavaScript and XML (or JSON) / 웹서버 비동기 통신
  - 페이지를 변화시키지 않으면서 웹 서버로 요청을 보낸다.
