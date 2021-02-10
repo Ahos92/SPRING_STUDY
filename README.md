@@ -1,19 +1,18 @@
 # SPRING_MVC 기초
 
- **[프로젝트구조](프로젝트-구조)** /
- **[Maven](#Maven)** /
- **[Lombok](#Lombok)** /
- **[log4j](#Log4j)** /
- **[junit](#Junit)** /
- **[의존성 주입](의존성-주입)** /
- **[SpringMVC](#SpringMVC)** /
- **[컨트롤러](컨트롤러)** <br>
+ ### **[프로젝트구조](프로젝트-구조)** 
  
- **[DB연결](DB연결)** /
- **[계층](#계층)** <br>
+ ### **[Maven](#Maven)**
+ - **[Lombok](#Lombok)** / **[log4j](#Log4j)** / **[junit](#Junit)** / **[의존성 주입](의존성-주입)**
  
- **[REST](#REST)** /
- **[Ajax](#Ajax)** <br>
+ ### **[SpringMVC](#SpringMVC)** 
+ - **[계층](#계층)** / **[컨트롤러](컨트롤러)**
+ 
+ ### **[DB연결](DB연결)**
+ - **[Mybatis](#Mybatis)** / **[Mapper](#Mapper)**
+ 
+ ### **[REST](#REST)**
+ - **[Ajax](#Ajax)** <br>
 
 
 ## 프로젝트 구조
@@ -44,11 +43,11 @@
 
 ## SpringMVC
  
+## 계층
+
 ## 컨트롤러
 
 ## DB연결
-
-## 계층
 
 ## REST
  ### REST란
