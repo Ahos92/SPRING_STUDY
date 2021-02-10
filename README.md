@@ -15,7 +15,7 @@
  - **[Ajax](#Ajax)** <br>
 
 
-## <span style="color: green;">프로젝트 구조</span>
+> ## <span style="color: green;">프로젝트 구조</span>
 >![projectStandard](./img/프로젝트구조패키지.png)
 >- src/main/java : 자바 코드를 작성하는곳 <br>	- src/main/java : 자바 코드를 작성하는곳 <br>
 >- src/main/resources : 자바 코드를 실행할 때 필요한 파일들을 보관하는 곳	- src/main/resources : 자바 코드를 실행할 때 필요한 파일들을 보관하는 곳
