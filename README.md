@@ -1,4 +1,4 @@
-# <span style="color: yellow">SPRING_MVC 기초</span>
+# SPRING_MVC 기초
 
  **[프로젝트구조](#프로젝트-구조)** 
  
@@ -56,7 +56,7 @@
 ## <span style="color: green;">Mapper</span>
 
 ## REST
- ### REST란
+ #### REST란
   - Mapping이름으로 URI의미를 표현
 	- 이 형식을 따른 시스템을 RESTful이라고 한다.
 	- RESTful을 따르면 웹서버가 웹 브라우저 뿐만이 아니라 모바일 앱과도 연결될 수 있다
@@ -68,12 +68,12 @@
   @PatchMapping // UPDATE(일부)
   @DeleteMapping // DELETE
   ```
- ### 추가할 Maven
+ #### 추가할 Maven
   - jackson-databind
   - jackson-dataformat-xml
   - gson
 
- ### 어노테이션
+ #### 어노테이션
  ```java
  @RestController
  public class RestSampleController {
@@ -94,7 +94,7 @@ public ResponseEntity<Employee> createEmployee(@RequestBody Employee new_emp) {
  - 보낸 요청이 도착하면 readyState값이 변한다.
  - readyState값 0-UNSET / 1-OPEND / 2-SEND / 3-LOADING / 4-DONE 
  
- ### 예제
+ #### 예제
  ```javascript
  // 요청 객체
  xhr = new XMLHttpRequest();
@@ -108,7 +108,7 @@ public ResponseEntity<Employee> createEmployee(@RequestBody Employee new_emp) {
  // 
  xhr.send // 2
  ```
- > ### Jquery
+ #### Jquery
  ```javascript
  $("#id속성").click(function(){
 	$.ajax({
