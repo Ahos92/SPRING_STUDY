@@ -1,4 +1,4 @@
-# <span style="color: green;">SPRING_MVC 기초</span>
+# <span style="color: yellow">SPRING_MVC 기초</span>
 
  **[프로젝트구조](#프로젝트-구조)** 
  
@@ -33,8 +33,8 @@
 >- target : 실제로 만들어질 프로젝트를 미리 볼 수 있음	- target : 실제로 만들어질 프로젝트를 미리 볼 수 있음
 
 ## <span style="color: green;">Maven</sapn>
- ### 프로젝트 빌드 / 배포 / 라이브러리 관리 자동화 프로그램
- ### pom.xml의 설정대로 관리
+ #### 프로젝트 빌드 / 배포 / 라이브러리 관리 자동화 프로그램
+ #### pom.xml의 설정대로 관리
 ## <span style="color: green;">Lombok</span>
   
 ## <span style="color: green;">Log4j</span>
