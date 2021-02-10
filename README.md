@@ -1,17 +1,17 @@
 # SPRING_MVC 기초
 
- ### **[프로젝트구조](#프로젝트-구조)** 
+ **[프로젝트구조](#프로젝트-구조)** 
  
- ### **[Maven](#Maven)**
+ **[Maven](#Maven)**
  - **[Lombok](#Lombok)** / **[log4j](#Log4j)** / **[junit](#Junit)** / **[의존성 주입](의존성-주입)**
  
- ### **[SpringMVC](#SpringMVC)** 
+ **[SpringMVC](#SpringMVC)** 
  - **[계층](#계층)** / **[컨트롤러](컨트롤러)**
  
- ### **[DB연결](DB연결)**
+**[DB연결](DB연결)**
  - **[Mybatis](#Mybatis)** / **[Mapper](#Mapper)**
  
- ### **[REST](#REST)**
+ **[REST](#REST)**
  - **[Ajax](#Ajax)** <br>
 
 
