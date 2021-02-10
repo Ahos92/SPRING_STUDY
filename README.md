@@ -31,6 +31,7 @@
   
 >- pom.xml : Maven 설정 파일	- pom.xml : Maven 설정 파일
 >- target : 실제로 만들어질 프로젝트를 미리 볼 수 있음	- target : 실제로 만들어질 프로젝트를 미리 볼 수 있음
+
 ## Maven
 
 ## Lombok
